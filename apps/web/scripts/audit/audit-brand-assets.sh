@@ -12,7 +12,7 @@ for f in "${required[@]}"; do
   fi
 done
 # Portfolio placeholder dir (work or oils or products)
-if [ ! -d public/work ] && [ ! -d public/oils ] && [ ! -d public/products ]; then
+if [ ! -d public/work ] && [ ! -d public/oils ] && [ ! -d public/products ] && [ ! -d public/studio-images ]; then
   echo "[brand-assets] MISSING: portfolio placeholder dir (public/{work,oils,products,studio-images})"
   fail=$((fail+1))
 fi
