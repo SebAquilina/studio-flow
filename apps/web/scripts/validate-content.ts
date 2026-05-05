@@ -10,7 +10,7 @@ function check(file: string, mustContain: string[]) {
 }
 check("components/site/Footer.tsx", ["Concept site by", "concierge.studio", "VAT/MBR"]);
 check("components/site/ConceptBanner.tsx", ["Studio Flow", "concierge.studio"]);
-check("lib/agent/system-prompt.ts", ["Sienna", "Studio Flow", "five-question screen", "consult", "concept site"]);
+check("lib/agent/system-prompt.ts", ["Sienna", "Studio Flow", "five-question-screen", "consult", "concept site"]);
 check("lib/agent/kb.ts", ["Valletta", "Studio Flow", "instructors"]);
 check("components/front/FrontHero.tsx", ["Tell Sienna", "Sienna", "Studio Flow"]);
 check("app/(public)/page.tsx", ["FrontHero", "ClientIdField"]);
