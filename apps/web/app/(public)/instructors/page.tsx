@@ -6,7 +6,7 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Instructors — Studio Flow",
+  title: "Instructors",
   description: "Four instructors, hired for what they teach. Sienna, Marco, Lara, Adam.",
   alternates: { canonical: "/instructors" },
 };

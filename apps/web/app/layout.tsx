@@ -57,12 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <ConceptBanner />
         <a href="#main" className="skip-to-content">Skip to content</a>
         <Header />
         <main id="main">{children}</main>
         <Footer />
         <Front />
-        <ConceptBanner />
         <Suspense fallback={null}><TrackingPixel /></Suspense>
         <ToastViewport />
       </body>

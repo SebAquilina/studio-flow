@@ -29,9 +29,9 @@ const BIOS: Record<string, { headline: string; story: string[]; teaches: string[
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const insts = await listInstructors().catch(() => []);
   const i = insts.find((x) => x.slug === params.slug);
-  if (!i) return { title: "Instructor — Studio Flow" };
+  if (!i) return { title: "Instructor" };
   return {
-    title: `${i.name} — Studio Flow`,
+    title: `${i.name}`,
     description: i.bio_md ?? undefined,
     alternates: { canonical: `/instructors/${params.slug}` },
   };

@@ -37,9 +37,9 @@ const PRINCIPLES: Record<string, { who_for: string[]; not_for: string[]; what_to
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const classes = await listClasses().catch(() => []);
   const c = classes.find((x) => x.slug === params.slug);
-  if (!c) return { title: "Class — Studio Flow" };
+  if (!c) return { title: "Class" };
   return {
-    title: `${c.name} — Studio Flow`,
+    title: `${c.name}`,
     description: c.hook ?? undefined,
     alternates: { canonical: `/classes/${params.slug}` },
   };

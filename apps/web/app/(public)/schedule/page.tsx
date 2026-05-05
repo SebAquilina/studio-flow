@@ -7,7 +7,7 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Schedule — Studio Flow",
+  title: "Schedule",
   description: "Week view. Mon–Sun, 6am–9pm. Tap any class to talk to Sienna about booking.",
   alternates: { canonical: "/schedule" },
 };

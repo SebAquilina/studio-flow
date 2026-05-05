@@ -1,6 +1,6 @@
 export const dynamic = "force-static";
 export const runtime = "edge";
-export const metadata = { title: "Terms — Studio Flow", alternates: { canonical: "/terms" } };
+export const metadata = { title: "Terms", alternates: { canonical: "/terms" } };
 
 export default function TermsPage() {
   return (

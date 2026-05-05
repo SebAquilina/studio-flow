@@ -5,7 +5,7 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Classes — Studio Flow",
+  title: "Classes",
   description: "12 classes across yoga, pilates, breathwork. Filtered by level and what you're recovering from.",
   alternates: { canonical: "/classes" },
 };

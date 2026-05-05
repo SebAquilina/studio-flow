@@ -98,3 +98,28 @@ h2::before {
   border-radius: 999px;
   letter-spacing: 0.02em;
 }
+
+/* Header nav */
+.site-header-inner { display: flex; align-items: center; gap: 1.25rem; }
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+.site-nav a {
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink, #2a2519);
+  text-decoration: none;
+  transition: color 200ms;
+}
+.site-nav a:hover { color: var(--color-accent, #5a6738); }
+@media (max-width: 760px) {
+  .site-nav { display: none; }
+}
+
+/* Reduce excess top padding on inner-page heroes */
+main > section:first-of-type {
+  padding-top: clamp(2rem, 5vw, 3.5rem) !important;
+}

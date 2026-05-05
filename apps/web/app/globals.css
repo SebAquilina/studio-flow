@@ -153,30 +153,7 @@ section { padding: var(--space-9) var(--space-5); }
 .site-footer .links a { color: var(--color-ink-muted); }
 .site-footer .links a:hover { color: var(--color-ink); }
 
-/* === Concept banner (first-visit) === */
-.concept-banner {
-  position: fixed;
-  bottom: var(--space-5);
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 720px;
-  width: calc(100% - 2 * var(--space-5));
-  background: var(--color-ink);
-  color: var(--color-bg);
-  padding: var(--space-5);
-  border-radius: var(--radius-md);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-  z-index: 60;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  animation: cb-slide-up var(--duration-slow) var(--ease-out);
-}
-@keyframes cb-slide-up { from { transform: translate(-50%, 100%); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
-.concept-banner a { color: white; }
-.concept-banner-actions { display: flex; gap: var(--space-3); justify-content: flex-end; flex-wrap: wrap; }
+ to { transform: translate(-50%, 0); opacity: 1; } }
 
 /* === Sections === */
 .section-eyebrow { color: var(--color-accent); font-family: var(--font-mono); font-size: var(--text-mono-small); letter-spacing: 0.12em; text-transform: uppercase; }
@@ -918,3 +895,37 @@ section { padding: var(--space-9) var(--space-5); }
 .heat--warm { background: #f4e8d8; color: var(--color-warn); }
 .heat--hot  { background: #f4dcd2; color: var(--color-error); }
 .heat--full { background: var(--color-error); color: white; }
+/* === Concept banner v2 — thin top strip === */
+.concept-banner {
+  position: relative;
+  width: 100%;
+  background: var(--color-ink, var(--mh-walnut, #2f261b));
+  color: var(--color-bg, #fff);
+  padding: 0.55rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.concept-banner p { margin: 0; flex: 1 1 auto; max-width: 720px; }
+.concept-banner a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.concept-banner .concept-banner-actions,
+.concept-banner-actions { flex: 0 0 auto; display: flex; gap: 0.5rem; }
+.concept-banner button {
+  background: transparent !important;
+  color: inherit !important;
+  border: 1px solid currentColor !important;
+  padding: 0.25rem 0.7rem !important;
+  font-size: 0.75rem !important;
+  border-radius: 999px !important;
+  cursor: pointer;
+}
+.concept-banner button:hover { background: rgba(255,255,255,0.1) !important; }
+@media (max-width: 720px) {
+  .concept-banner { padding: 0.5rem 0.75rem; font-size: 0.75rem; }
+}
