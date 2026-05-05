@@ -127,24 +127,24 @@ main > section:first-of-type {
 /* === Studio Flow motion language ============================== */
 /* Breath rhythm — 6 second inhale (entry), 6 second exhale (settle) */
 
-main section {
+:root.js-motion main section {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1200ms cubic-bezier(.4,.1,.2,1), transform 1300ms cubic-bezier(.4,.1,.2,1);
-}
-main section.in-view { opacity: 1; transform: none; }
+  transition: opacity 1200ms cubic-bezier(.4,.1,.2,1), transform 1300ms cubic-bezier(.4,.1,.2,1);}
+:root.js-motion main section.in-view { opacity: 1; transform: none; }
 
 /* Headlines — chalk-write reveal (left-to-right mask) */
-main h1, main h2, main h3 {
+:root.js-motion main h1, :root.js-motion main h2, :root.js-motion main h3 {
   background: linear-gradient(90deg, var(--sf-shadow, #1f2624) 50%, transparent 50%);
   background-size: 200% 100%;
   background-position: 100% 0;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  transition: background-position 1500ms cubic-bezier(.4,.1,.2,1) 200ms;
-}
-main h1.in-view, main h2.in-view, main h3.in-view { background-position: 0 0; }
+  transition: background-position 1500ms cubic-bezier(.4,.1,.2,1) 200ms;}
+:root.js-motion main h1.in-view,
+:root.js-motion main h2.in-view,
+:root.js-motion main h3.in-view { background-position: 0 0; }
 @supports not (background-clip: text) {
   main h1, main h2, main h3 {
     background: none;
@@ -167,13 +167,13 @@ main h1.in-view, main h2.in-view, main h3.in-view { background-position: 0 0; }
 }
 
 /* Session cards — placed on tatami (no bounce, slow drop) */
-.session-card, .next-sessions-grid > * {
+:root.js-motion .session-card, :root.js-motion .next-sessions-grid > * {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 1100ms cubic-bezier(.4,.1,.2,1), transform 1100ms cubic-bezier(.4,.1,.2,1);
-}
-.session-card.in-view, .next-sessions-grid.in-view > *,
-.next-sessions-grid > *.in-view { opacity: 1; transform: none; }
+  transition: opacity 1100ms cubic-bezier(.4,.1,.2,1), transform 1100ms cubic-bezier(.4,.1,.2,1);}
+:root.js-motion .session-card.in-view,
+:root.js-motion .next-sessions-grid.in-view > *,
+:root.js-motion .next-sessions-grid > *.in-view { opacity: 1; transform: none; }
 
 /* Stagger session-card children — uses :nth-child for sequence */
 .next-sessions-grid > *:nth-child(1) { transition-delay: 100ms; }
@@ -182,11 +182,11 @@ main h1.in-view, main h2.in-view, main h3.in-view { background-position: 0 0; }
 .next-sessions-grid > *:nth-child(4) { transition-delay: 640ms; }
 
 /* Lead paragraph — fades in last so the eye reads top-down */
-main p.lead, main p.eyebrow {
+:root.js-motion main p.lead, :root.js-motion main p.eyebrow {
   opacity: 0;
-  transition: opacity 1300ms 400ms ease;
-}
-main p.lead.in-view, main p.eyebrow.in-view { opacity: 1; }
+  transition: opacity 1300ms 400ms ease;}
+:root.js-motion main p.lead.in-view,
+:root.js-motion main p.eyebrow.in-view { opacity: 1; }
 
 /* Stat numbers (count-up) — bigger, prouder when complete */
 [data-count-up] {
