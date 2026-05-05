@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export const runtime = "edge";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://casal-olives-web.pages.dev";
+  const base = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://studio-flow-web.pages.dev";
   return {
     rules: [
       { userAgent: "*", allow: "/", disallow: ["/admin", "/admin/*", "/api/admin/*"] },
