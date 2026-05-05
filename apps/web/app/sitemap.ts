@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 export const runtime = "edge";
-const CLASSES = ["slow-hatha", "yin", "pilates-foundations", "coherent-breathing"];
-const INSTRUCTORS = ["sienna-borg", "marco-said"];
+const CLASSES = ["slow-hatha", "yin", "vinyasa-flow", "mat-foundations", "breath-coherent"];
+const INSTRUCTORS = ["sienna-borg", "marco-said", "lara-mizzi"];
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://studio-flow-web.pages.dev";
   const now = new Date();
