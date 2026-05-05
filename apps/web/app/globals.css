@@ -153,8 +153,6 @@ section { padding: var(--space-9) var(--space-5); }
 .site-footer .links a { color: var(--color-ink-muted); }
 .site-footer .links a:hover { color: var(--color-ink); }
 
- to { transform: translate(-50%, 0); opacity: 1; } }
-
 /* === Sections === */
 .section-eyebrow { color: var(--color-accent); font-family: var(--font-mono); font-size: var(--text-mono-small); letter-spacing: 0.12em; text-transform: uppercase; }
 
