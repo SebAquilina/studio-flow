@@ -34,6 +34,18 @@ export function BrandMotion() {
       { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
     );
     reveals.forEach((t) => io.observe(t));
+    // Re-scan after async-rendered sections appear
+    const _reScan = () => {
+      // Re-run the same query selectors and observe any new elements
+    };
+    [400, 1200, 2500].forEach((ms) => setTimeout(() => {
+      document.querySelectorAll<HTMLElement>(
+        "main section, main h1, main h2, main h3, main p.lead, main p.eyebrow, .work-tile, .work-card, .session-card, .next-sessions-grid > *, .oil-card-img, .oil-detail-img, .collection-card-img, .catalog-card-img, .oil-card-img-link, .product-image-main, .journal-card, .journal-row, .sale-badge, blockquote, ul, ol, table"
+      ).forEach((t) => {
+        const tt = t as HTMLElement & { __observed?: boolean };
+        if (!tt.__observed) { tt.__observed = true; io.observe(t); }
+      });
+    }, ms));
 
     // Number count-up — find any element with data-count-up=N
     document.querySelectorAll<HTMLElement>("[data-count-up]").forEach((el) => {
