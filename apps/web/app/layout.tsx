@@ -4,6 +4,7 @@ import "@/styles/brand-skin.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ConceptBanner } from "@/components/site/ConceptBanner";
+import { BrandMotion } from "@/components/motion/BrandMotion";
 import { Front } from "@/components/front/Front";
 import { TrackingPixel } from "@/components/analytics/TrackingPixel";
 import { ToastViewport } from "@/components/ui/Toast";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Front />
         <Suspense fallback={null}><TrackingPixel /></Suspense>
         <ToastViewport />
+        <BrandMotion />
       </body>
     </html>
   );
