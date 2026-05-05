@@ -1,0 +1,100 @@
+/* Studio Flow — Calm yoga / pilates skin: chalk + ink, vertical rules, breathing motion */
+
+:root {
+  --sf-chalk: #f3efe7;
+  --sf-river: #4d6b65;
+  --sf-clay: #c66f48;
+  --sf-shadow: #1f2624;
+}
+
+body {
+  background: var(--sf-chalk);
+  background-image:
+    linear-gradient(180deg, transparent calc(100% - 1px), rgba(31,38,36,0.06) 100%);
+  background-size: 100% 1.65rem;
+}
+
+/* Hero: lowercase whisper, breathing motion, vertical rule */
+.front-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  color: var(--sf-shadow);
+  text-transform: lowercase;
+  letter-spacing: -0.01em;
+  animation: sf-breath 8s ease-in-out infinite;
+}
+@keyframes sf-breath {
+  0%, 100% { transform: scale(1.0); opacity: 0.96; }
+  50% { transform: scale(1.012); opacity: 1.0; }
+}
+
+/* Eyebrows: hand-numbered chits */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--sf-river);
+  border-bottom: 1px solid var(--sf-river);
+  padding-bottom: 0.15rem;
+  font-weight: 500;
+}
+
+/* Sections separated by long horizontal pencil rule (1px) */
+main > section + section { border-top: 1px solid rgba(77,107,101,0.18); }
+
+/* H2 — calm, lowercase, with vertical clay accent */
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  color: var(--sf-shadow);
+  text-transform: lowercase;
+  position: relative;
+  padding-left: 1.5rem;
+}
+h2::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.25em;
+  width: 3px; height: 1.4em;
+  background: var(--sf-clay);
+}
+
+/* Session cards: chits with hand-numbered count */
+.session-card, .next-sessions-grid > article {
+  position: relative;
+  padding: 1.5rem;
+  background: #fff;
+  border-left: 3px solid var(--sf-river);
+  box-shadow: none;
+  border-radius: 0;
+}
+.session-card .meta, .next-sessions-grid .meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--sf-river);
+  text-transform: lowercase;
+}
+
+/* Concierge box */
+.front-hero-input, .front-hero-input-form {
+  border: 1px solid var(--sf-shadow);
+  background: #fff;
+  border-radius: 2px;
+  font-family: var(--font-display);
+}
+
+/* Buttons: warm clay */
+.btn-primary, button[type="submit"] {
+  background: var(--sf-clay) !important;
+  color: #fff !important;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
