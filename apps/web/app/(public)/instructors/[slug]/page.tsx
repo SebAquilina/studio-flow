@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!i) return { title: "Instructor — Studio Flow" };
   return {
     title: `${i.name} — Studio Flow`,
-    description: i.bio ?? undefined,
+    description: i.bio_md ?? undefined,
     alternates: { canonical: `/instructors/${params.slug}` },
   };
 }
