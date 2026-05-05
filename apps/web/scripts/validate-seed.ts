@@ -9,7 +9,7 @@ const SPEC_ROOT = resolve(__dirname, "../../../docs/spec/studio-flow");
 
 const BrandSeed = z.object({
   name: z.string().min(3),
-  slug: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
   voice: z.object({
     rules: z.array(z.string()).min(3),
     bannedPhrases: z.array(z.string()).min(1),
@@ -35,7 +35,7 @@ const ContentSeed = z.object({
 
 const ProductsSeed = z.object({
   oils: z.array(z.object({
-    slug: z.string().regex(/^[a-z][a-z0-9-]*$/),
+    slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
     name: z.string().min(3),
     kind: z.enum(["oil", "gift", "experience"]),
     price_cents: z.number().int().min(100).max(50000),
