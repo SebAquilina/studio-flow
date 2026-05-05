@@ -217,3 +217,24 @@ main > section:first-of-type {
   color: inherit !important;
   background: inherit !important;
 }
+
+/* === FrontHero / concierge — always-visible (no entrance hiding) === */
+:root.js-motion .front-hero h1,
+:root.js-motion .front-hero h2,
+:root.js-motion .front-hero p,
+:root.js-motion .front-hero .lead,
+:root.js-motion .front-hero .eyebrow,
+:root.js-motion .concept-banner * {
+  opacity: 1 !important;
+  transform: none !important;
+  background-position: 0 0 !important;
+  color: inherit !important;
+  background: revert !important;
+  background-clip: revert !important;
+  -webkit-background-clip: revert !important;
+}
+/* For Studio Flow specifically (chalk-write conflict) */
+:root.js-motion .front-hero h1 {
+  background: none !important;
+  color: var(--sf-shadow, var(--co-ink, var(--sv-ink, var(--mh-walnut, #1a1a1a)))) !important;
+}
