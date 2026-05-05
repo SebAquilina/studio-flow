@@ -1,0 +1,15 @@
+{
+  "name": "studio-vella",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "validate:seed": "pnpm --filter web validate:seed",
+    "audit": "pnpm --filter web audit",
+    "audit:static": "pnpm --filter web audit:static",
+    "lint": "pnpm --filter web lint",
+    "typecheck": "pnpm --filter web typecheck"
+  }
+}

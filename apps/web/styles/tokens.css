@@ -1,0 +1,50 @@
+:root {
+  /* === Studio Flow brand tokens — yoga, pilates, breathwork, Valletta === */
+  --color-bg: #f8f7f4;             /* chalk page bg */
+  --color-surface: #ffffff;
+  --color-ink: #1d1f1e;             /* near-black */
+  --color-ink-muted: #666867;
+  --color-ink-subtle: #8b8e8c;
+  --color-accent: #3f5c4f;          /* slow-river green */
+  --color-accent-strong: #2f4a3f;
+  --color-warm: #d8a97c;            /* highlight pill only — beginner-friendly */
+  --color-line: #e5e3de;
+  --color-line-strong: #cdc9c2;
+  --color-overlay: rgba(29, 31, 30, 0.65);
+  --color-focus: #3f5c4f;
+  --color-error: #8b2929;
+  --color-success: #3f5c4f;
+  --color-warn: #b8742a;
+
+  --color-design-spec-accent: #3f5c4f;
+  --color-design-spec-bg: #f8f7f4;
+
+  /* === Typography === */
+  --font-display: "GT Sectra Display", "Tiempos Headline", "Times New Roman", serif;
+  --font-sans: "Inter", "Söhne", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Fluid type scale */
+  --text-display: clamp(2.4rem, 6vw, 4.2rem);
+  --text-h2: clamp(1.6rem, 4vw, 2.4rem);
+  --text-h3: clamp(1.2rem, 2.6vw, 1.5rem);
+  --text-body: 1rem;
+  --text-small: 0.88rem;
+  --text-eyebrow: 0.78rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem;    --space-5: 1.5rem; --space-6: 2rem;
+  --space-7: 3rem;    --space-8: 4.5rem; --space-9: 6.5rem;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-1: 0 4px 14px rgba(29, 31, 30, 0.05);
+  --shadow-2: 0 8px 24px rgba(29, 31, 30, 0.16);
+  --shadow-3: 0 20px 50px rgba(29, 31, 30, 0.20);
+}

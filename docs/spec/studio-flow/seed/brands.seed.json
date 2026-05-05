@@ -1,0 +1,25 @@
+{
+  "name": "Studio Flow",
+  "slug": "studio-flow",
+  "tagline": "Yoga, pilates, breathwork — Valletta",
+  "voice": {
+    "register": "calm, never preachy",
+    "rules": [
+      "calm, never preachy",
+      "specific over vague",
+      "plain English; Sanskrit names glossed once",
+      "no wellness clichés",
+      "first person singular for opinions"
+    ],
+    "bannedPhrases": ["journey", "intention", "self-care", "honour", "embrace", "elevate", "experience as a verb", "lean in"]
+  },
+  "palette": { "bg": "#f8f7f4", "ink": "#1d1f1e", "accent": "#3f5c4f", "muted": "#666867" },
+  "typography": { "display": "GT Sectra Display", "sans": "Inter" },
+  "concept": {
+    "isConceptSite": true,
+    "operator": "concierge.studio",
+    "tier": "Standard",
+    "checkoutEnabled": false,
+    "leadInbox": "portfolio@concierge.studio"
+  }
+}

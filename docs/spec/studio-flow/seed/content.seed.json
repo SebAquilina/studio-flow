@@ -1,0 +1,15 @@
+{
+  "siteUrl": "https://studio-flow-web.pages.dev",
+  "header": { "wordmark": "studio flow", "ctaText": "Talk to Sienna →", "ctaHref": "/#concierge" },
+  "frontHero": {
+    "h1": "Tell Sienna what's going on.",
+    "sub": "Yoga, pilates, and breathwork in Valletta. The studio that asks what's wrong before it asks what you want. Sienna is the founder and the concierge here — she'll screen you for injury and pregnancy, then pick a class. Scroll if you'd rather browse.",
+    "prompts": [
+      "I'm new — help me find my first class",
+      "I'm pregnant, second trimester",
+      "Returning after a knee injury",
+      "What's the next Slow Hatha?"
+    ]
+  },
+  "footer": { "disclosure": "© 2026 Studio Flow · Concept site by concierge.studio · this brand is a portfolio piece · yoga, pilates, breathwork in Valletta · checkout is disabled · contact form reaches a real inbox at portfolio@concierge.studio · not a registered trader · no VAT/MBR" }
+}

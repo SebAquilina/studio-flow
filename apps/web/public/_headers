@@ -1,0 +1,21 @@
+# Cloudflare Pages _headers — concierge.studio v0.1
+# Per ref 19 § Class 2 — overwrite-prone assets get short-cache, not immutable.
+
+/brand/*
+  Cache-Control: public, max-age=300, must-revalidate
+
+/og-default.png
+  Cache-Control: public, max-age=300, must-revalidate
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=300, must-revalidate
+
+/r2/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Default security headers
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  X-Frame-Options: DENY

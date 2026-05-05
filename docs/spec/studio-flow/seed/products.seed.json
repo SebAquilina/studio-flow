@@ -1,0 +1,9 @@
+{
+  "oils": [
+    { "slug": "drop-in", "name": "Drop-in", "kind": "oil", "price_cents": 1800 },
+    { "slug": "5-pack", "name": "5-class pack", "kind": "oil", "price_cents": 8200 },
+    { "slug": "10-pack", "name": "10-class pack", "kind": "oil", "price_cents": 15500 },
+    { "slug": "monthly", "name": "Monthly unlimited", "kind": "oil", "price_cents": 12000 },
+    { "slug": "private", "name": "Privates", "kind": "experience", "price_cents": 7000 }
+  ]
+}

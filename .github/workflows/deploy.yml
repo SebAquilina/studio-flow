@@ -1,0 +1,113 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-actionlint@v1
+      - name: lint-deploy-workflow (no continue-on-error on gate stages — skill ref 38)
+        run: |
+          # Inline copy of assets/scripts/lint-deploy-workflow.sh
+          set -euo pipefail
+          GATE='validate:seed|validate-seed|validate:zod-seed|seed:coverage|audit:static|audit-static|audit:secrets|audit-secrets|audit:route-integrity|audit-route-integrity|audit-analytics-static|audit-analytics-runtime|audit:brand-assets|audit-brand-assets|test:unit|unit tests'
+          fail=0
+          mapfile -t lines < .github/workflows/deploy.yml
+          for i in "${!lines[@]}"; do
+            if echo "${lines[$i]}" | grep -qiE "^\s*(- name:|- run:|run:|name:).*($GATE)"; then
+              block=$(printf "%s\n" "${lines[@]:$i:8}")
+              if echo "$block" | grep -q "continue-on-error: true"; then
+                echo "[lint-deploy-workflow] FORBIDDEN: gate step has continue-on-error at line $((i+1)):"
+                echo "  ${lines[$i]}"
+                fail=$((fail+1))
+              fi
+            fi
+          done
+          if [ "$fail" -gt 0 ]; then
+            echo "Phase 6 gate steps cannot opt out via continue-on-error. See skill ref 38."
+            exit 1
+          fi
+          echo "[lint-deploy-workflow] OK"
+
+  build-and-deploy:
+    needs: lint
+    runs-on: ubuntu-latest
+    outputs:
+      deployment_url: ${{ steps.deploy.outputs.deployment-url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+        working-directory: apps/web
+
+      # === Phase 6 Stage A — static (no network), all blocking ===
+      - name: validate-content
+        run: pnpm validate:seed
+        working-directory: apps/web
+      - name: validate-zod-seed
+        run: pnpm tsx scripts/validate-seed.ts
+        working-directory: apps/web
+      - name: audit-brand-assets (skill ref 39)
+        run: bash scripts/audit/audit-brand-assets.sh
+        working-directory: apps/web
+      - name: audit-static (skill refs 17, 19, 21, 22, 26-33, 37)
+        run: pnpm tsx scripts/audit-static.ts ../..
+        working-directory: apps/web
+      - name: audit-secrets
+        run: bash scripts/audit/audit-secrets.sh
+        working-directory: apps/web
+      - name: audit-route-integrity
+        run: bash scripts/audit/audit-route-integrity.sh
+        working-directory: apps/web
+      - name: audit-analytics-static (skill ref 36 — 15 checks)
+        run: pnpm tsx scripts/audit-analytics/run.ts
+        working-directory: apps/web
+      - name: audit-analytics-runtime (skill ref 36 — 38 tests)
+        run: pnpm tsx scripts/audit-analytics/runtime.test.ts
+        working-directory: apps/web
+      - name: unit tests
+        run: pnpm test:unit
+        working-directory: apps/web
+
+      # === Build + deploy ===
+      - name: Apply D1 migrations
+        run: npx wrangler d1 migrations apply DB --remote
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        working-directory: apps/web
+      - name: Build (Next + next-on-pages)
+        run: |
+          pnpm build
+          npx @cloudflare/next-on-pages@latest
+          rm -rf .next/cache
+        working-directory: apps/web
+      - name: Deploy to Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/web
+          command: pages deploy .vercel/output/static --project-name=casal-olives-web --branch=main
+
+      # === Phase 6 Stage B — network probes (60s warm-up exemption per ref 38) ===
+      - name: warm-up wait
+        run: sleep 60
+      - name: audit-network (sentinel + agent-first SEO)
+        run: BASE_URL="https://casal-olives-web.pages.dev" pnpm tsx scripts/audit.ts
+        working-directory: apps/web
+      - name: audit-headers
+        run: bash scripts/audit/audit-headers.sh "https://casal-olives-web.pages.dev"
+        working-directory: apps/web

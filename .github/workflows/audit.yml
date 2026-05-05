@@ -1,0 +1,62 @@
+name: site-audit
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  pull_request:
+    paths:
+      - "apps/web/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "URL to audit (defaults to production)"
+        required: false
+        default: "https://studio-vella-web.pages.dev"
+
+jobs:
+  static-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        # version read from package.json packageManager field
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+        working-directory: apps/web
+      - uses: reviewdog/action-actionlint@v1
+      - run: pnpm validate:seed
+        working-directory: apps/web
+      - run: pnpm tsx scripts/audit-static.ts ../..
+        working-directory: apps/web
+
+  network-audit:
+    needs: static-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        # version read from package.json packageManager field
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+        working-directory: apps/web
+      - working-directory: apps/web
+        env:
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://studio-vella-web.pages.dev' }}
+        run: pnpm tsx scripts/audit.ts
+
+  bundle-audit:
+    needs: static-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: audit-secrets (no leaked keys in JS bundle)
+        run: bash apps/web/scripts/audit/audit-secrets.sh
+        env:
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://studio-vella-web.pages.dev' }}
+      - name: audit-headers (CSP, HSTS, X-Frame, etc)
+        run: bash apps/web/scripts/audit/audit-headers.sh
+        env:
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://studio-vella-web.pages.dev' }}
