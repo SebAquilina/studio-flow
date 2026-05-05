@@ -100,14 +100,14 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: apps/web
-          command: pages deploy .vercel/output/static --project-name=casal-olives-web --branch=main
+          command: pages deploy .vercel/output/static --project-name=studio-flow-web --branch=main
 
       # === Phase 6 Stage B — network probes (60s warm-up exemption per ref 38) ===
       - name: warm-up wait
         run: sleep 60
       - name: audit-network (sentinel + agent-first SEO)
-        run: BASE_URL="https://casal-olives-web.pages.dev" pnpm tsx scripts/audit.ts
+        run: BASE_URL="https://studio-flow-web.pages.dev" pnpm tsx scripts/audit.ts
         working-directory: apps/web
       - name: audit-headers
-        run: bash scripts/audit/audit-headers.sh "https://casal-olives-web.pages.dev"
+        run: bash scripts/audit/audit-headers.sh "https://studio-flow-web.pages.dev"
         working-directory: apps/web
