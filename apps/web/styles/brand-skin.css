@@ -128,8 +128,8 @@ main > section:first-of-type {
 /* Breath rhythm — 6 second inhale (entry), 6 second exhale (settle) */
 
 :root.js-motion main section {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 0.45;
+  transform: translateY(10px);
   transition: opacity 1200ms cubic-bezier(.4,.1,.2,1), transform 1300ms cubic-bezier(.4,.1,.2,1);
 }
 :root.js-motion main section.in-view { opacity: 1; transform: none; }
@@ -173,8 +173,8 @@ main > section:first-of-type {
 /* Session cards — placed on tatami (no bounce, slow drop) */
 :root.js-motion .session-card,
 :root.js-motion .next-sessions-grid > * {
-  opacity: 0;
-  transform: translateY(14px);
+  opacity: 0.45;
+  transform: translateY(10px);
   transition: opacity 1100ms cubic-bezier(.4,.1,.2,1), transform 1100ms cubic-bezier(.4,.1,.2,1);
 }
 :root.js-motion .session-card.in-view,
@@ -190,7 +190,7 @@ main > section:first-of-type {
 /* Lead paragraph — fades in last so the eye reads top-down */
 :root.js-motion main p.lead,
 :root.js-motion main p.eyebrow {
-  opacity: 0;
+  opacity: 0.45;
   transition: opacity 1300ms 400ms ease;
 }
 :root.js-motion main p.lead.in-view,
