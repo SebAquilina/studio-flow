@@ -10,12 +10,12 @@ ADMIN_OWNER_EMAILS = "seb.aquilina@gmail.com"
 [[d1_databases]]
 binding = "DB"
 database_name = "studio-flow-db"
-database_id = "PLACEHOLDER"
+database_id = "1e5d3e58-6c73-4350-a255-06551e21e703"
 migrations_dir = "drizzle/migrations"
 
 [[kv_namespaces]]
 binding = "DEAD_LETTER"
-id = "PLACEHOLDER"
+id = "8811c444a65243bc8bf3b46ffa59c61f"
 
 [env.preview]
 name = "studio-flow-web-preview"
@@ -26,9 +26,9 @@ ADMIN_OWNER_EMAILS = "seb.aquilina@gmail.com"
 [[env.preview.d1_databases]]
 binding = "DB"
 database_name = "studio-flow-preview"
-database_id = "PLACEHOLDER"
+database_id = "734df434-4381-4755-bacf-930ac6058cd6"
 migrations_dir = "drizzle/migrations"
 
 [[env.preview.kv_namespaces]]
 binding = "DEAD_LETTER"
-id = "1bd6acbf0d6e4f11b164cf9c1aeea787"
+id = "8811c444a65243bc8bf3b46ffa59c61f"
