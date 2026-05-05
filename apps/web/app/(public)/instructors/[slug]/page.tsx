@@ -73,7 +73,7 @@ export default async function InstructorDetail({ params }: { params: { slug: str
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "var(--space-4)", marginTop: "var(--space-4)" }}>
               {teaches.map((c) => (
                 <Link key={c.slug} href={`/classes/${c.slug}`} className="session-card" style={{ textDecoration: "none", color: "inherit" }}>
-                  <p className="meta">{c.duration_min} min · €{(c.price_cents/100).toFixed(0)}</p>
+                  <p className="meta">{c.duration_min} min</p>
                   <h3 style={{ marginTop: "0.4rem" }}>{c.name}</h3>
                   <p className="muted" style={{ marginTop: "0.6rem", fontSize: "0.9375rem" }}>{c.hook}</p>
                 </Link>

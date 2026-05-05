@@ -61,7 +61,7 @@ export default async function ClassDetail({ params }: { params: { slug: string }
     <>
       <section style={{ padding: "var(--space-9) 0 var(--space-5)" }}>
         <div className="container">
-          <p className="eyebrow">{c.duration_min} minutes · €{(c.price_cents/100).toFixed(0)}</p>
+          <p className="eyebrow">{c.duration_min} minutes</p>
           <h1 style={{ marginTop: "var(--space-3)" }}>{c.name}.</h1>
           {c.hook && <p className="lead" style={{ marginTop: "var(--space-4)", maxWidth: "44rem", lineHeight: 1.55 }}>{c.hook}</p>}
         </div>
